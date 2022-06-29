@@ -1,16 +1,34 @@
-const game = () => {
-    let playerScore = 0;
-    let computeScore = 0;
+const playerText  = document.querySelector('#player-text');
+const computerText  = document.querySelector('#computer-text');
+const resultText  = document.querySelector('#result-text');
 
-    const startGame = () =>{
-        const playBtn = document.querySelector('.intro button');
-        const introScreen = document.querySelector('.intro');
-        const options = document.querySelector('.options');
+const choiceBtns = document.querySelectorAll('.choice-button');
 
-        playBtn.addEventListener('click', () =>{
-            introScreen.classList.add("fadeOut");
-        });
-    };
+let player;
+let computer;
+let result; 
 
-    //Is call the inner function
+choiceBtns.forEach(button => button.addEventListener('click', () => {
+    
+    player = button.textContent;
+    computerTurn();
+    playerText.textContent = `Player: ${player}`
+    ComputerText.textContent = `Computer: ${computer}`
+}));
+
+function computerTurn() {
+    const randNum = Math.floor(Math.random() * 3) + 1;
+
+    switch(randNum) {
+        case 1:
+            computer = 'Rock';
+            break;
+        case 2:
+            computer = 'Paper';
+            break;
+        case 3:
+            computer = 'Scissors';
+            break;
+
+    }
 }
