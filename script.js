@@ -1,34 +1,64 @@
-const playerText  = document.querySelector('#player-text');
-const computerText  = document.querySelector('#computer-text');
-const resultText  = document.querySelector('#result-text');
+let computerSelection;
+let result;
+let round = 0;
 
-const choiceBtns = document.querySelectorAll('.choice-button');
+function getComputerChoice() {
+  let compChoices = ["rock", "paper", "scissors"];
+  let randomNumber = Math.floor(Math.random() * compChoices.length) + 1;
 
-let player;
-let computer;
-let result; 
-
-choiceBtns.forEach(button => button.addEventListener('click', () => {
-    
-    player = button.textContent;
-    computerTurn();
-    playerText.textContent = `Player: ${player}`
-    ComputerText.textContent = `Computer: ${computer}`
-}));
-
-function computerTurn() {
-    const randNum = Math.floor(Math.random() * 3) + 1;
-
-    switch(randNum) {
-        case 1:
-            computer = 'Rock';
-            break;
-        case 2:
-            computer = 'Paper';
-            break;
-        case 3:
-            computer = 'Scissors';
-            break;
-
-    }
+  if (randomNumber === 1) {
+    computerSelection = "rock";
+  }
+  if (randomNumber === 2) {
+    computerSelection = "paper";
+  }
+  if (randomNumber === 3) {
+    computerSelection = "scissors";
+  }
+  console.log(computerSelection);
 }
+
+
+function userInput() {
+const playerSelection = prompt("rock, paper or scissors");
+return playerSelection;
+}
+
+function playRound(playerSelection, computerSelection) {
+  getComputerChoice();
+  userInput();
+  
+  if (playerSelection === computerSelection) {
+    result = "it's a tie";
+  }
+  if (playerSelection === "rock" && computerSelection === "scissors") {
+    result = "you win!";
+  }
+  if (playerSelection === "scissors" && computerSelection === "paper") {
+    result = "you win!";
+  }
+  if (playerSelection === "paper" && computerSelection === "rock") {
+    result = "you win!";
+  }
+  if (playerSelection === "scissors" && computerSelection === "rock") {
+    result = "you lost";
+  }
+  if (playerSelection === "paper" && computerSelection === "scissors") {
+    result = "you lost";
+  }
+  if (playerSelection === "rock" && computerSelection === "paper") {
+    result = "you lost";
+  }
+  return result;
+}
+playRound();
+console.log(result);
+
+
+function game() {
+  for (i = 0; i < 5; i++) {
+    playRound();
+    return result;
+  }
+}
+game();
