@@ -44,7 +44,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-  for (i = 0; i < 6; i++) {
+  for (i = 0; i < 5; i++) {
     const playerSelection = prompt("rock paper or scissors").toLowerCase();
     const computerSelection = getComputerChoice();
     console.log(playerSelection);
@@ -61,7 +61,7 @@ function game() {
     console.log("you have failed us all");
   }
 
-  if (i === 6) {
+  if (i === 5) {
     alert("Refresh to fight again");
   }
 }
