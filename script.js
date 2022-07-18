@@ -20,10 +20,7 @@ function playRound(playerSelection, computerSelection) {
     return (winner = "There is no clear winner");
   } else if (playerSelection === "paper" && computerSelection === "paper") {
     return (winner = "Humans and A.I are at a standstill");
-  } else if (
-    playerSelection === "scissors" &&
-    computerSelection === "scissors"
-  ) {
+  } else if (playerSelection === "scissors" && computerSelection === "scissors") {
     return (winner = "There is no winner");
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
     userScore++;
