@@ -6,38 +6,38 @@ function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3) + 1;
 
   if (randomNumber === 1) {
-    return (compChoice = "rock");
+    return (compChoice = "Rock");
   } else if (randomNumber === 2) {
-    return (compChoice = "paper");
+    return (compChoice = "Paper");
   } else if (randomNumber === 3) {
-    return (compChoice = "scissors");
+    return (compChoice = "Scissors");
   }
 }
 
 function playRound(playerSelection, computerSelection) {
   let winner;
-  if (playerSelection === "rock" && computerSelection === "rock") {
+  if (playerSelection === "Rock" && computerSelection === "Rock") {
     return (winner = "There is no clear winner");
-  } else if (playerSelection === "paper" && computerSelection === "paper") {
+  } else if (playerSelection === "Paper" && computerSelection === "Paper") {
     return (winner = "Humans and A.I are at a standstill");
-  } else if (playerSelection === "scissors" && computerSelection === "scissors") {
+  } else if (playerSelection === "Scissors" && computerSelection === "Scissors") {
     return (winner = "There is no winner");
-  } else if (playerSelection === "rock" && computerSelection === "scissors") {
+  } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
     userScore++;
     return (winner = "You have defeated the robot overlords");
-  } else if (playerSelection === "scissors" && computerSelection === "paper") {
+  } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
     userScore++;
     return (winner = "You have beaten the A.I");
-  } else if (playerSelection === "paper" && computerSelection === "rock") {
+  } else if (playerSelection === "Paper" && computerSelection === "Rock") {
     userScore++;
     return (winner = "You win this round");
-  } else if (playerSelection === "scissors" && computerSelection === "rock") {
+  } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
     compScore++;
     return (winner = "The Robots win");
-  } else if (playerSelection === "paper" && computerSelection === "scissors") {
+  } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
     compScore++;
     return (winner = "The A.I overlord wins");
-  } else if (playerSelection === "rock" && computerSelection === "paper") {
+  } else if (playerSelection === "Rock" && computerSelection === "Paper") {
     compScore++;
     return (winner = "A.I wins");
   }
@@ -45,10 +45,11 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
   for (i = 0; i < 5; i++) {
-    const playerSelection = prompt("rock paper or scissors").toLowerCase();
+    const playerPrompt = prompt("rock paper or scissors").toLowerCase();
+    const playerSelection = playerPrompt.charAt(0).toUpperCase() + playerPrompt.slice(1);
     const computerSelection = getComputerChoice();
-    console.log(playerSelection);
-    console.log(computerSelection);
+    console.log(`Humans choose ${playerSelection}`);
+    console.log(`A.I chose ${computerSelection}`)
     console.log(playRound(playerSelection, computerSelection));
     console.log(userScore, compScore);
   }
