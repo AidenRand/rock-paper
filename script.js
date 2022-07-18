@@ -34,7 +34,7 @@ function playRound(playerSelection, computerSelection) {
   } else if (playerSelection === "paper" && computerSelection === "rock") {
     userScore++;
     return (winner = "You win this round");
-  } else if (playerSelection === " scissors" && computerSelection === "rock") {
+  } else if (playerSelection === "scissors" && computerSelection === "rock") {
     compScore++;
     return (winner = "The Robots win");
   } else if (playerSelection === "paper" && computerSelection === "scissors") {
