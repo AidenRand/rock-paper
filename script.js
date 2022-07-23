@@ -22,16 +22,18 @@ function getComputerChoice() {
 }
 
 // Get score of round
-const updateScore = () => {
-  const playerScore = document.querySelector(".player-score p");
-  const computerScore = document.querySelector(".computer-score p");
+function updateScore() {
+  const playerScore = document.querySelector(".player-score");
+  const computerScore = document.querySelector(".computer-score");
   playerScore.textContent = userScore;
   computerScore.textContent = compScore;
 };
+updateScore();
 
 // Get the winner of the round and record the score
 function playRound(playerSelection, computerSelection) {
   let winner;
+  updateScore();
   if (playerSelection === "Rock" && computerSelection === "Rock") {
     return (winner = "There is no clear winner");
   } else if (playerSelection === "Paper" && computerSelection === "Paper") {
