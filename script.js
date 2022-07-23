@@ -1,6 +1,13 @@
+const playerText = document.querySelector("#playerText");
+const computerText = document.querySelector("#computerText");
+const choiceBtns = document.querySelectorAll(".choiceBtn");
+const resultText = document.querySelector("#resultText");
+let playerSelection;
+let computerSelection;
 let userScore = 0;
 let compScore = 0;
 
+// Get the computers choice
 function getComputerChoice() {
   const computerChoice = ["rock", "paper", "scissors"];
   let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -14,13 +21,25 @@ function getComputerChoice() {
   }
 }
 
+// Get score of round
+const updateScore = () => {
+  const playerScore = document.querySelector(".player-score p");
+  const computerScore = document.querySelector(".computer-score p");
+  playerScore.textContent = userScore;
+  computerScore.textContent = compScore;
+};
+
+// Get the winner of the round and record the score
 function playRound(playerSelection, computerSelection) {
   let winner;
   if (playerSelection === "Rock" && computerSelection === "Rock") {
     return (winner = "There is no clear winner");
   } else if (playerSelection === "Paper" && computerSelection === "Paper") {
     return (winner = "Humans and A.I are at a standstill");
-  } else if (playerSelection === "Scissors" && computerSelection === "Scissors") {
+  } else if (
+    playerSelection === "Scissors" &&
+    computerSelection === "Scissors"
+  ) {
     return (winner = "There is no winner");
   } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
     userScore++;
@@ -43,15 +62,18 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+// make game run 5 rounds and display the winner
 function game() {
   for (i = 0; i < 5; i++) {
-    const playerPrompt = prompt("rock paper or scissors").toLowerCase();
-    const playerSelection = playerPrompt.charAt(0).toUpperCase() + playerPrompt.slice(1);
-    const computerSelection = getComputerChoice();
-    console.log(`Humans choose ${playerSelection}`);
-    console.log(`A.I chose ${computerSelection}`)
-    console.log(playRound(playerSelection, computerSelection));
-    console.log(userScore, compScore);
+    choiceBtns.forEach((button) =>
+      button.addEventListener("click", () => {
+        playerSelection = button.textContent;
+        computerSelection = getComputerChoice();
+        playerText.textContent = `Human Survivors: ${playerSelection}`;
+        computerText.textContent = `A.I Overlord: ${compChoice}`;
+        resultText.textContent = playRound(playerSelection, computerSelection);
+      })
+    );
   }
 
   if (userScore === compScore) {
@@ -63,7 +85,6 @@ function game() {
   }
 
   if (i === 5) {
-    alert("Refresh to fight again");
   }
 }
 game();
