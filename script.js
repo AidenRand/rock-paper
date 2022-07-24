@@ -8,8 +8,14 @@ let playerSelection;
 let computerSelection;
 let userScore = 0;
 let compScore = 0;
-let i = 0;
 
+function disableButtons() {
+  choiceBtns.forEach((elem) => {
+    elem.disabled = true;
+  });
+}
+
+// Record and display button inputs
 choiceBtns.forEach((choiceBtns) =>
   choiceBtns.addEventListener("click", () => {
     playerSelection = choiceBtns.textContent;
@@ -65,16 +71,21 @@ function playRound(playerSelection, computerSelection) {
     winner = "A.I wins";
     compScore++;
   }
+  // At 5 return the final winner
   playerScore.textContent = userScore;
   computerScore.textContent = compScore;
 
-  if (userScore === 5) {
-    winner = "you have wonnnnn";
+  if (userScore >= 5) {
+    disableButtons();
+    playerText.textContent = "";
+    computerText.textContent = "";
+    winner = "The humans will live to fight another day";
   }
-  if (compScore === 5) {
-    winner = "you have failed us all";
+  if (compScore >= 5) {
+    disableButtons();
+    playerText.textContent = "";
+    computerText.textContent = "";
+    winner = "The A.I has won, You have doomed us all";
   }
   return [winner];
 }
-
-// make game run 5 rounds and display the winner

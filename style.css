@@ -4,11 +4,10 @@
 }
 
 body {
-  background-color: rgb(41, 41, 41);
+  background-color: #1e1e1e;
 }
 
 .gameText {
-  color: white;
   display: flex;
   justify-content: center;
   margin-top: 20px;
@@ -19,6 +18,7 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  font-family: "Share Tech Mono", monospace;
 }
 
 .buttons {
@@ -29,16 +29,55 @@ body {
 }
 
 .choiceBtn {
-    font-size: 36px;
-    padding: 5px;
-    border-radius: 5px;
-    cursor: pointer;
+  font-size: 36px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out 0s;
+  
+}
+
+.choiceBtn:hover {
+  transform: scale(1.10);
+  color: rgb(255, 0, 0);
+  opacity: 95%;
 }
 
 .scoreText {
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    margin-left: 200px;
-    font-size: 34px;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 50px;
+  gap: 600px;
+  font-family: "Share Tech Mono", monospace;
+}
+
+#playerText {
+  color: rgb(0, 187, 0);
+  text-shadow: black 3px 3px 5px ;
+}
+
+#computerText {
+  color: rgb(187, 0, 0);
+  text-shadow: black 3px 3px 5px ;
+}
+
+
+#resultText {
+  color: rgb(231, 231, 231);
+  text-shadow: black 3px 3px 5px ;
+}
+
+.player-score {
+  color: rgb(0, 187, 0);
+}
+
+.computer-score {
+  color: rgb(187, 0, 0);
+}
+
+.choiceBtn {
+  font-family: "Share Tech Mono", monospace;
 }
