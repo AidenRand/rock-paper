@@ -2,10 +2,23 @@ const playerText = document.querySelector("#playerText");
 const computerText = document.querySelector("#computerText");
 const choiceBtns = document.querySelectorAll(".choiceBtn");
 const resultText = document.querySelector("#resultText");
+const playerScore = document.querySelector(".player-score");
+const computerScore = document.querySelector(".computer-score");
 let playerSelection;
 let computerSelection;
 let userScore = 0;
 let compScore = 0;
+let i = 0;
+
+choiceBtns.forEach((choiceBtns) =>
+  choiceBtns.addEventListener("click", () => {
+    playerSelection = choiceBtns.textContent;
+    computerSelection = getComputerChoice();
+    playerText.textContent = `Human Survivors: ${playerSelection}`;
+    computerText.textContent = `A.I Overlord: ${compChoice}`;
+    resultText.textContent = playRound(playerSelection, computerSelection);
+  })
+);
 
 // Get the computers choice
 function getComputerChoice() {
@@ -21,72 +34,47 @@ function getComputerChoice() {
   }
 }
 
-// Get score of round
-function updateScore() {
-  const playerScore = document.querySelector(".player-score");
-  const computerScore = document.querySelector(".computer-score");
-  playerScore.textContent = userScore;
-  computerScore.textContent = compScore;
-};
-updateScore();
-
 // Get the winner of the round and record the score
 function playRound(playerSelection, computerSelection) {
   let winner;
-  updateScore();
   if (playerSelection === "Rock" && computerSelection === "Rock") {
-    return (winner = "There is no clear winner");
+    winner = "There is no clear winner";
   } else if (playerSelection === "Paper" && computerSelection === "Paper") {
-    return (winner = "Humans and A.I are at a standstill");
+    winner = "Humans and A.I are at a standstill";
   } else if (
     playerSelection === "Scissors" &&
     computerSelection === "Scissors"
   ) {
-    return (winner = "There is no winner");
+    winner = "There is no winner";
   } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+    winner = "You have defeated the robot overlords";
     userScore++;
-    return (winner = "You have defeated the robot overlords");
   } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+    winner = "You have beaten the A.I";
     userScore++;
-    return (winner = "You have beaten the A.I");
   } else if (playerSelection === "Paper" && computerSelection === "Rock") {
+    winner = "You win this round";
     userScore++;
-    return (winner = "You win this round");
   } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+    winner = "The Robots win";
     compScore++;
-    return (winner = "The Robots win");
   } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+    winner = "The A.I overlord wins";
     compScore++;
-    return (winner = "The A.I overlord wins");
   } else if (playerSelection === "Rock" && computerSelection === "Paper") {
+    winner = "A.I wins";
     compScore++;
-    return (winner = "A.I wins");
   }
+  playerScore.textContent = userScore;
+  computerScore.textContent = compScore;
+
+  if (userScore === 5) {
+    winner = "you have wonnnnn";
+  }
+  if (compScore === 5) {
+    winner = "you have failed us all";
+  }
+  return [winner];
 }
 
 // make game run 5 rounds and display the winner
-function game() {
-  for (i = 0; i < 5; i++) {
-    choiceBtns.forEach((button) =>
-      button.addEventListener("click", () => {
-        playerSelection = button.textContent;
-        computerSelection = getComputerChoice();
-        playerText.textContent = `Human Survivors: ${playerSelection}`;
-        computerText.textContent = `A.I Overlord: ${compChoice}`;
-        resultText.textContent = playRound(playerSelection, computerSelection);
-      })
-    );
-  }
-
-  if (userScore === compScore) {
-    console.log("there is no clear winner");
-  } else if (userScore > compScore) {
-    console.log("the humans will live to fight another day");
-  } else if (userScore < compScore) {
-    console.log("you have failed us all");
-  }
-
-  if (i === 5) {
-  }
-}
-game();
