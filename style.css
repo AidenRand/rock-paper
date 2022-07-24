@@ -39,7 +39,7 @@ body {
 
 .choiceBtn:hover {
   transform: scale(1.10);
-  color: rgb(255, 0, 0);
+  color: rgb(31, 31, 31);
   opacity: 95%;
 }
 
@@ -49,7 +49,7 @@ body {
   justify-content: space-around;
   margin-left: auto;
   margin-right: auto;
-  font-size: 50px;
+  font-size: 60px;
   gap: 600px;
   font-family: "Share Tech Mono", monospace;
 }
@@ -72,10 +72,12 @@ body {
 
 .player-score {
   color: rgb(0, 187, 0);
+  text-shadow: black 3px 3px 5px ;
 }
 
 .computer-score {
   color: rgb(187, 0, 0);
+  text-shadow: black 3px 3px 5px ;
 }
 
 .choiceBtn {

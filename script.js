@@ -44,14 +44,11 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
   let winner;
   if (playerSelection === "Rock" && computerSelection === "Rock") {
-    winner = "There is no clear winner";
+    winner = "Human's and robot's are on equal ground";
   } else if (playerSelection === "Paper" && computerSelection === "Paper") {
     winner = "Humans and A.I are at a standstill";
-  } else if (
-    playerSelection === "Scissors" &&
-    computerSelection === "Scissors"
-  ) {
-    winner = "There is no winner";
+  } else if (playerSelection === "Scissors" && computerSelection === "Scissors") {
+    winner = "This battle has no victor";
   } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
     winner = "You have defeated the robot overlords";
     userScore++;
@@ -59,16 +56,16 @@ function playRound(playerSelection, computerSelection) {
     winner = "You have beaten the A.I";
     userScore++;
   } else if (playerSelection === "Paper" && computerSelection === "Rock") {
-    winner = "You win this round";
+    winner = "Human's have won this battle";
     userScore++;
   } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
-    winner = "The Robots win";
+    winner = "The robots conquered this round";
     compScore++;
   } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
     winner = "The A.I overlord wins";
     compScore++;
   } else if (playerSelection === "Rock" && computerSelection === "Paper") {
-    winner = "A.I wins";
+    winner = "A.I has won this battle";
     compScore++;
   }
   // At 5 return the final winner
@@ -85,7 +82,7 @@ function playRound(playerSelection, computerSelection) {
     disableButtons();
     playerText.textContent = "";
     computerText.textContent = "";
-    winner = "The A.I has won, You have doomed us all";
+    winner = "The A.I have won, You have doomed us all";
   }
   return [winner];
 }
