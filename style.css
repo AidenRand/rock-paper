@@ -41,10 +41,11 @@ body {
   transform: scale(1.10);
   color: rgb(31, 31, 31);
   opacity: 95%;
+
 }
 
 .scoreText {
-  color: white;
+  color: rgb(211, 211, 211);
   display: flex;
   justify-content: space-around;
   margin-left: auto;
@@ -82,4 +83,5 @@ body {
 
 .choiceBtn {
   font-family: "Share Tech Mono", monospace;
+  background-color: rgb(226, 226, 226);
 }
