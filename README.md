@@ -5,4 +5,4 @@ First JavaScript project Rock paper scissors
 6-28-2022
 
 Aiden Rand's Rock, Paper, Scissors project 
-  (https://cortrax.github.io/rock-paper/
+  https://cortrax.github.io/rock-paper/
